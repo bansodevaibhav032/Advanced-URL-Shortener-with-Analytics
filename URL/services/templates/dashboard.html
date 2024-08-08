@@ -1,15 +1,15 @@
 {% extends "base.html" %}
-
+{% block title %} URL Shortner | Dashboard {% endblock title%}
 {% block content %}
   <section style="background-color: gainsboro; padding-top: 5rem; padding-bottom: 5rem ;">
     <div class="container card shadow col-md-7">
         <form class="row mt-3" method="POST">
           {% csrf_token %}
             <div class="col-md-7">
-              <input type="text" class="form-control"  id="staticUrl" name="URL" placeholder="Paste URL">
+              <input type="text" class="form-control"  id="staticUrl" name="URL" placeholder="Paste URL" value="{{url}}">
             </div>
             <div class="col-3">
-              <input type="text" class="form-control" name="alias" placeholder="Alias">
+              <input type="text" class="form-control" name="alias" placeholder="Alias" value="{{alias}}">
             </div>
             <div class="col-2">
               <button type="submit" class="btn btn-primary mb-3">Short URL</button>
@@ -29,7 +29,7 @@
             <tbody>
               {% for url in request.user.url_set.all %}
               <tr>
-                <th scope="row">1</th>
+                <th scope="row">{{forloop.counter}}</th>
                 <td><input type="text" value="{{url.target_url}}" title="{{url.target_url}}"  class="form-control" readonly></td>
                 <td class="d-flex align-items-center">
                     <span>
