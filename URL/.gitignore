@@ -1,4 +1,6 @@
-__pychache__
+__pycache__
 *.pyc
 
 db.sqlite3
+
+staticfiles/admin
