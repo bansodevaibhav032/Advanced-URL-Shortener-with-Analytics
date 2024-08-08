@@ -28,3 +28,9 @@ def dashboard(request):
     site = get_current_site(request)
     return render(request,"dashboard.html",{"domain":site})
 
+
+def redirect_to_target_page(request,alias):
+    obj = Url.objects.get(alias=alias)
+    URL = obj.target_url
+    return redirect(URL)
+

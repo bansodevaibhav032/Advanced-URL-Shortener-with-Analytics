@@ -17,10 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from django.views.generic import TemplateView
+from services.views import redirect_to_target_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include("accounts.urls")),
     path('', TemplateView.as_view(template_name="home.html")),
-    path("dashboard/",include("services.urls"))
+    path("dashboard/",include("services.urls")),
+    path("<str:alias>", redirect_to_target_page)
 ]
